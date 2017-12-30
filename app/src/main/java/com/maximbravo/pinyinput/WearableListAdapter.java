@@ -15,16 +15,18 @@ public class WearableListAdapter extends WearableRecyclerView.Adapter {
 
     private Context context;
     private String[] parts;
+    private int gravity;
 
-    public WearableListAdapter(Context context, String[] parts) {
+    public WearableListAdapter(Context context, String[] parts, int gravity) {
         this.context = context;
         this.parts = parts;
+        this.gravity = gravity;
     }
 
     @Override
     public WearableViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.recycler_item, parent, false);
-        WearableViewHolder viewHolder = new WearableViewHolder(view);
+        WearableViewHolder viewHolder = new WearableViewHolder(view, gravity);
         return viewHolder;
     }
 

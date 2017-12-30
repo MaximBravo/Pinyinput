@@ -12,9 +12,10 @@ class WearableViewHolder extends WearableRecyclerView.ViewHolder {
 
     private TextView textView;
 
-    public WearableViewHolder(View view) {
+    public WearableViewHolder(View view, int gravity) {
         super(view);
         textView = view.findViewById(R.id.text);
+        textView.setGravity(gravity);
     }
 
     public void setText(String text) {
