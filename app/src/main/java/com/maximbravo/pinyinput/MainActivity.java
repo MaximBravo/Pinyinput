@@ -2,20 +2,34 @@ package com.maximbravo.pinyinput;
 
 import android.os.Bundle;
 import android.support.wearable.activity.WearableActivity;
-import android.widget.TextView;
 
 public class MainActivity extends WearableActivity {
 
-    private TextView mTextView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mTextView = (TextView) findViewById(R.id.text);
+        String[] begginings =
+                {"b", "p", "m", "f", "d",
+                 "t", "n", "l", "g", "k",
+                 "h", "j", "q", "x", "z",
+                 "c", "s", "zh", "ch", "sh", "r"};
 
-        // Enables Always-on
-        setAmbientEnabled();
+
+
+
+        if (findViewById(R.id.fragment_container) != null) {
+            if (savedInstanceState != null) {
+                return;
+            }
+
+            WearableRecyclerViewFragment fragment = new WearableRecyclerViewFragment(begginings);
+
+            getFragmentManager().beginTransaction()
+                    .add(R.id.fragment_container, fragment).commit();
+        }
     }
 }
